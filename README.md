@@ -1,6 +1,6 @@
 # Clay Elmore Personal Portfolio
 
-(Projects with links are available on my github!)
+(Projects with links are available to view!)
 
 * Machine Learning
   * Timeseries
