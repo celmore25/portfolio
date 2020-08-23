@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-(Projects with links have been developed)
+(Projects with links are available on my github!)
 
 * Machine Learning
   * Timeseries
@@ -16,5 +16,5 @@
 * Optimization
   * Marketing Allocation
 * Linear Algebra
-  * Singular Value Decomposition - Image Compression
+  * [Singular Value Decomposition - Image Compression](https://github.com/celmore25/portfolio/blob/master/Notebooks/linear_algebra/SVD_Image_Compression.ipynb)
   * Wavelet Decompositions
