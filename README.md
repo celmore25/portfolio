@@ -1,6 +1,4 @@
-# Clay Elmore Personal Project Portfolio
-
-## Table of Contents
+# Clay Elmore Personal Portfolio
 
 (Projects with links are available on my github!)
 
