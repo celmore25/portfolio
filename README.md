@@ -5,7 +5,7 @@
 * Machine Learning
   * Timeseries
     * DMD
-    * [LSTM](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/LSTM_Energy_Prices.ipynb)
+    * [LSTM - Energy Price Predictions](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/LSTM_Energy_Prices.ipynb)
   * Classification
     * XGB
     * Random Forests
