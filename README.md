@@ -10,6 +10,8 @@
     * XGB
     * Random Forests
     * Deep Learning
+  * Regression
+    * [Linear Gradient Descent - Algorithm Implementation](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/linear_gradient_descent.ipynb)
 * Statistics
 * Optimization
   * Marketing Allocation
