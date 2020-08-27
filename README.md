@@ -4,7 +4,7 @@
 
 * Machine Learning
   * Timeseries
-    * [Dynamic Mode Decomposition - Energy Dynamics](https://github.com/celmore25/portfolio/blob/master/Notebooks/linear_algebra/DMD_Energy_Prices.ipynb)
+    * [Dynamic Mode Decomposition - Energy Dynamics](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/DMD_Energy_Prices.ipynb)
     * [LSTM - Energy Price Predictions](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/LSTM_Energy_Prices.ipynb)
   * Classification
     * XGB
