@@ -8,7 +8,7 @@
     * [LSTM - Energy Price Predictions](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/LSTM_Energy_Prices.ipynb)
   * Classification
     * XGB
-    * Random Forests
+    * [Random Forest - Churn Model](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/Random_Forest_Banks.ipynb)
     * Deep Learning
   * Regression
     * [Linear Gradient Descent - Algorithm Implementation](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/linear_gradient_descent.ipynb)
@@ -18,3 +18,4 @@
 * Linear Algebra
   * [Singular Value Decomposition - Image Compression](https://github.com/celmore25/portfolio/blob/master/Notebooks/linear_algebra/SVD_Image_Compression.ipynb)
   * Wavelet Decompositions
+  * Markov Chains
