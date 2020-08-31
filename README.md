@@ -15,3 +15,4 @@
 * Optimization
 * Linear Algebra
   * [Singular Value Decomposition - Image Compression](https://github.com/celmore25/portfolio/blob/master/Notebooks/linear_algebra/SVD_Image_Compression.ipynb)
+  * [Markov Chains - A TensorFlow Implementation]()
