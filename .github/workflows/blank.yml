@@ -29,8 +29,8 @@ jobs:
       # - uses: docker://continuumio/miniconda
 
       # Runs a python job
-      - name: Run .py File
+      - name: Build Docker Image from Dockerfile
         run: | 
-              docker pull continuumio/miniconda
+              docker build -f infrastructure/DOCKERFILE -t testmini:latest .
               docker image list
           # docker run continuumio/miniconda python my_ml_code/ml_prep.py
