@@ -23,14 +23,12 @@ jobs:
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       # # uses the docker miniconda container
       # - uses: docker://continuumio/miniconda
 
       # Runs a python job
       - name: Run .py File
-        uses: actions/checkout@v2
-        run: |
-          docker pull docker://continuumio/miniconda
-          docker run continuumio/miniconda python my_ml_code/ml_prep.py
+        run: docker pull docker://continuumio/miniconda
+          # docker run continuumio/miniconda python my_ml_code/ml_prep.py
