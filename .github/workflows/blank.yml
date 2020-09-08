@@ -38,5 +38,25 @@ jobs:
       # push image to docker hub
       - name: Push Docker Image
         run: |
-              docker image list
               docker push ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF}
+  
+  # This workflow contains a single job called "build"
+  test:
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # login to docker hub
+      - name: Docker Pull
+        env:
+          DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
+        run: |
+              docker login --username celmore25 -p ${DOCKER_SECRET}
+              docker pull ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF}
+
+      # builds the docker image with the github repo code included
+      - name: Run Python Tests
+        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF} python /portfolio/my_ml_code/ml_prep.py
