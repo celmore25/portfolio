@@ -22,15 +22,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
 
-      # # uses the docker miniconda container
-      # - uses: docker://continuumio/miniconda
-
-      # Runs a python job
+      # builds the docker image with the github repo code included
       - name: Build Docker Image from Dockerfile
         run: | 
               docker build -f infrastructure/DOCKERFILE -t testmini:latest .
               docker run testmini:latest python /portfolio/my_ml_code/ml_prep.py
-          # docker run continuumio/miniconda python my_ml_code/ml_prep.py
+
+      - name: Check github environment variables
+        run: |
+              echo $GITHUB_REPOSITORY
+              echo $GITHUB_HEAD_REF
+              echo $GITHUB_BASE_REF
