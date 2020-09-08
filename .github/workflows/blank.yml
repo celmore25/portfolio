@@ -28,7 +28,7 @@ jobs:
       - name: Docker Login
         env:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
-        run: docker login --username celmore25 --password-stdin ${DOCKER_SECRET}
+        run: docker login --username celmore25 --p ${DOCKER_SECRET}
 
       # builds the docker image with the github repo code included
       - name: Docker Build
