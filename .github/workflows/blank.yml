@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -25,14 +24,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
 
+      # login to docker hub
+      - name: Docker Login
+        run: docker login --username celmore25
+
       # builds the docker image with the github repo code included
-      - name: Build Docker Image from Dockerfile
+      - name: Docker Build
         run: | 
               docker build -f infrastructure/DOCKERFILE -t testmini:latest .
               docker run testmini:latest python /portfolio/my_ml_code/ml_prep.py
 
-      - name: Check github environment variables
-        run: |
-              echo $GITHUB_REPOSITORY
-              echo $GITHUB_HEAD_REF
-              echo $GITHUB_BASE_REF
+      # push image to docker hub
+      - name: Push Docker Image
+        run: echo {$GITHUB_REPOSITORY}/{$GITHUB_HEAD_REF}
