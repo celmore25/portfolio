@@ -26,7 +26,7 @@ jobs:
 
       # login to docker hub
       - name: Docker Login
-        run: docker login --username celmore25
+        run: docker login --username celmore25 --password $DOCKER_SECRET
 
       # builds the docker image with the github repo code included
       - name: Docker Build
@@ -36,4 +36,4 @@ jobs:
 
       # push image to docker hub
       - name: Push Docker Image
-        run: echo {$GITHUB_REPOSITORY}/{$GITHUB_HEAD_REF}
+        run: echo ${GITHUB_REPOSITORY}/${GITHUB_HEAD_REF}
