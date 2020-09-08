@@ -33,10 +33,10 @@ jobs:
       # builds the docker image with the github repo code included
       - name: Docker Build
         run: | 
-              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}/${GITHUB_HEAD_REF}:latest .
+              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF} .
 
       # push image to docker hub
       - name: Push Docker Image
         run: |
               docker image list
-              docker push ${GITHUB_REPOSITORY}/${GITHUB_HEAD_REF}
+              docker push ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF}
