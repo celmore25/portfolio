@@ -28,14 +28,13 @@ jobs:
       - name: Docker Login
         env:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
-        run: docker login --username celmore25 -p ${DOCKER_SECRET}
+        run: docker login --username celmore25 --password-stdin ${DOCKER_SECRET}
 
       # builds the docker image with the github repo code included
       - name: Docker Build
         run: | 
-              docker build -f infrastructure/DOCKERFILE -t testmini:latest .
-              docker run testmini:latest python /portfolio/my_ml_code/ml_prep.py
+              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}/${GITHUB_HEAD_REF}:latest .
 
       # push image to docker hub
       - name: Push Docker Image
-        run: echo ${GITHUB_REPOSITORY}/${GITHUB_HEAD_REF}
+        run: docker image list
