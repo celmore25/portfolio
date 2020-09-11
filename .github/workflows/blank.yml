@@ -102,3 +102,4 @@ jobs:
       # builds the docker image with the github repo code included
       - name: Run Jupyter Notebook
         run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
+
