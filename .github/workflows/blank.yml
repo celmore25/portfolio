@@ -53,7 +53,7 @@ jobs:
       # push image to docker hub
       - name: Push Docker Image
         run: |
-              docker push ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF}
+              docker push ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
   
   # This workflow contains a single job called "build"
   test:
@@ -73,7 +73,7 @@ jobs:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
         run: |
               docker login --username celmore25 -p ${DOCKER_SECRET}
-              docker pull ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF}
+              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
 
       # builds the docker image with the github repo code included
       - name: Run Python Tests
