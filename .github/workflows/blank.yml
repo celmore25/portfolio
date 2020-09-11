@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [ master ]
 
-# set the image tag
-env:
-  IMAGE_TAG: ${IMAGE_TAG}
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
@@ -51,13 +47,13 @@ jobs:
       # builds the docker image with the github repo code included
       - name: Docker Build
         run: | 
-              echo ${GITHUB_REPOSITORY}:${IMAGE_TAG}
-              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${IMAGE_TAG} .
+              echo ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
+              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} .
 
       # push image to docker hub
       - name: Push Docker Image
         run: |
-              docker push ${GITHUB_REPOSITORY}:${IMAGE_TAG}
+              docker push ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
   
   # This workflow contains a single job called "build"
   test:
@@ -77,8 +73,8 @@ jobs:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
         run: |
               docker login --username celmore25 -p ${DOCKER_SECRET}
-              docker pull ${GITHUB_REPOSITORY}:${IMAGE_TAG}
+              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
 
       # builds the docker image with the github repo code included
       - name: Run Python Tests
-        run: docker run ${GITHUB_REPOSITORY}:${IMAGE_TAG} python /portfolio/my_ml_code/ml_prep.py
+        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} python /portfolio/my_ml_code/ml_prep.py
