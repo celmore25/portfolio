@@ -47,13 +47,13 @@ jobs:
       # builds the docker image with the github repo code included
       - name: Docker Build
         run: | 
-              echo ${GITHUB_REPOSITORY}:${GITHUB_REF}
-              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_REF} .
+              echo ${GITHUB_REPOSITORY}:${{ github.head_ref }}
+              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} .
 
       # push image to docker hub
       - name: Push Docker Image
         run: |
-              docker push ${GITHUB_REPOSITORY}:${GITHUB_REF}
+              docker push ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
   
   # This workflow contains a single job called "test"
   test:
@@ -73,11 +73,11 @@ jobs:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
         run: |
               docker login --username celmore25 -p ${DOCKER_SECRET}
-              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF}
+              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
 
       # builds the docker image with the github repo code included
       - name: Run Python Tests
-        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF} python /portfolio/my_ml_code/ml_prep.py
+        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} python /portfolio/my_ml_code/ml_prep.py
   
   # This workflow contains a single job called "run"
   run:
@@ -97,9 +97,9 @@ jobs:
           DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
         run: |
               docker login --username celmore25 -p ${DOCKER_SECRET}
-              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF}
+              docker pull ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
 
       # builds the docker image with the github repo code included
       - name: Run Jupyter Notebook
-        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF} nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
+        run: docker run ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
 
