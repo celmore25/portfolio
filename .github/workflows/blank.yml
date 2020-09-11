@@ -48,7 +48,7 @@ jobs:
       - name: Docker Build
         run: | 
               echo ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/}
-              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_HEAD_REF} .
+              docker build -f infrastructure/DOCKERFILE -t ${GITHUB_REPOSITORY}:${GITHUB_REF#refs/heads/} .
 
       # push image to docker hub
       - name: Push Docker Image
