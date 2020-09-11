@@ -15,7 +15,7 @@ jobs:
   # linting job with flake
   flake8-lint:
       runs-on: ubuntu-latest
-      name: Lint
+      name: flake lint
       steps:
         - name: Check out source repository
           uses: actions/checkout@v2
@@ -80,7 +80,7 @@ jobs:
         run: docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} python /portfolio/my_ml_code/ml_prep.py
   
   # This workflow contains a single job called "run"
-  run:
+  run-linear-algebra:
 
     # create a necessity of build
     needs: test
@@ -101,5 +101,33 @@ jobs:
 
       # builds the docker image with the github repo code included
       - name: Run Jupyter Notebook
-        run: docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} jupyter nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
+        run: |
+              docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} jupyter nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
+              docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} jupyter nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/SVD_Image_Compression.ipynb
+  
+  # # This workflow contains a single job called "run"
+  # run-machine-learning:
+
+  #   # create a necessity of build
+  #   needs: test
+
+  #   # The type of runner that the job will run on
+  #   runs-on: ubuntu-latest
+
+  #   # Steps represent a sequence of tasks that will be executed as part of the job 
+  #   steps:
+
+  #     # login to docker hub
+  #     - name: Docker Pull
+  #       env:
+  #         DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
+  #       run: |
+  #             docker login --username celmore25 -p ${DOCKER_SECRET}
+  #             docker pull ${GITHUB_REPOSITORY}:${{ github.head_ref }}
+
+  #     # builds the docker image with the github repo code included
+  #     - name: Run Jupyter Notebook
+  #       run: |
+  #             docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} jupyter nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/Markov_Chains_Tensor_Flow.ipynb
+  #             docker run ${GITHUB_REPOSITORY}:${{ github.head_ref }} jupyter nbconvert --to notebook --inplace --execute portfolio/Notebooks/linear_algebra/SVD_Image_Compression.ipynb
 
