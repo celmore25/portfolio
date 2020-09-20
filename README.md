@@ -11,6 +11,8 @@
   * Regression
     * [Linear Gradient Descent - Algorithm Implementation](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/linear_gradient_descent.ipynb)
     * [Deep Learning - Gluten/Starch Concentrations from Raw Spectra](https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/NN_Gluten_Starch.ipynb)
+  * Clustering
+    * [KNN/Hierarchy Clustering - Traffic Sensors]()https://github.com/celmore25/portfolio/blob/master/Notebooks/machine_learning/Traffic_Clustering.ipynb 
 * Statistics
 * Optimization
 * Linear Algebra
